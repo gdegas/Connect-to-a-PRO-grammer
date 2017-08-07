@@ -1,0 +1,27 @@
+{
+  "name": "babelify-react-jsx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+     "test": "echo \"Error: no test specified\" && exit 1",
+     "bundle": "browserify index.js -o main.js -t babelify",
+     "bundle:watch": "watchify -v -d -t babelify index.js -o main.js",
+     "watch:server": "nodemon server/index.js --ignore server/public/**",
+     "watch": "run-p watch:client watch:server"
+   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+   "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+   "babel-plugin-transform-react-jsx": "^6.24.1",
+   "babelify": "^7.3.0",
+   "browserify": "^14.4.0",
+   "watchify": "^3.9.0"
+   },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
