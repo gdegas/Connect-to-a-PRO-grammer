@@ -5,15 +5,25 @@ const knex = require('knex')({
   connection: process.env.DATABASE_URL
 })
 
-function postUser(user) {
+function postUser(userData) {
   const query = knex
-    .insert(user)
+    .insert(userData)
     .into('users')
     .returning('*')
 
   return query
 }
 
+function postLanguage(userData) {
+  const query = knex
+    .insert(userData)
+    .into('languages')
+    .returning('*')
+
+  return query
+}
+
 module.exports = {
-  postUser
+  postUser,
+  postLanguage
 }
