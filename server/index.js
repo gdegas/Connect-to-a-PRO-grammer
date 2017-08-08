@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { postUser } = require('./knex')
+const { postUser, postLanguage } = require('./knex')
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -26,7 +26,14 @@ app.post('/users', (req, res) => {
         res.sendStatus(500)
       })
   })
+})
 
+app.post('/languages', (req, res) => {
+  postLanguage(req.body)
+    .then((language) => {
+      console.log(language)
+      res.sendStatus(201)
+    })
 })
 
 app.listen(process.env.PORT, () => console.log('listening on: ' + process.env.PORT))
