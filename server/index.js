@@ -15,10 +15,10 @@ app.use(staticMiddleware)
 app.post('/users', (req, res) => {
   const { password } = req.body
   bcrypt.hash(password, saltRounds, function (err, hash) {
-    console.log(hash, err)
+    console.log(err)
     req.body.password = hash
     postUser(req.body)
-      .then(user => {
+      .then((user) => {
         res.status(201).json(user)
       })
       .catch(error => {
@@ -26,14 +26,6 @@ app.post('/users', (req, res) => {
         res.sendStatus(500)
       })
   })
-})
-
-app.post('/languages', (req, res) => {
-  postLanguage(req.body)
-    .then((language) => {
-      console.log(language)
-      res.sendStatus(201)
-    })
 })
 
 app.listen(process.env.PORT, () => console.log('listening on: ' + process.env.PORT))
