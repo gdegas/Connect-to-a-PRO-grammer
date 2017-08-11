@@ -1,8 +1,8 @@
 -- up
 CREATE TABLE users (
   id      serial,
-  username      varchar(40) not null,
-  password      varchar not null,
+  username      text,
+  password      text,
   mentor        boolean,
   picture       text,
   UNIQUE(username)
