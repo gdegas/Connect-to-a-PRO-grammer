@@ -1,5 +1,6 @@
 require('dotenv').config()
 const { postUser, postLanguage } = require('./knex')
+var socket = require('socket.io')
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
