@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+#signupForm {
+  margin-top: 40%;
+  transform: translateY(-50%);
+  border: #e3eae2 solid;
+  background-color: rgba(255, 255, 255, 0.59);
+  padding: 25px;
+}
+
+body {
+  background-image: url("/images/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+}
+
+#logo {
+  font-family: 'Saira Semi Condensed', sans-serif;
+  font-weight: 600;
+  color: #ecf0f1;
+}
+
+#signupForm {
+  font-family: 'Saira', sans-serif;
+}
