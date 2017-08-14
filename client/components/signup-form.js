@@ -9,7 +9,7 @@ export default class SignupForm extends Component {
     this.handleData = this.handleData.bind(this)
   }
 
-  async handleData(event) {
+  handleData(event) {
     event.preventDefault()
     const formData = new FormData(event.target)
 
@@ -18,6 +18,7 @@ export default class SignupForm extends Component {
       password: formData.get('password'),
       languages: formData.getAll('languages')
     }
+    localStorage.setItem('username', typedData.username)
     if (formData.get('radio') === 'mentor') {
       typedData.mentor = true
     }
