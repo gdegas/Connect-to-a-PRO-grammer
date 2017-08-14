@@ -18,7 +18,6 @@ export default class SignupForm extends Component {
       password: formData.get('password'),
       languages: formData.getAll('languages')
     }
-    localStorage.setItem('username', typedData.username)
     if (formData.get('radio') === 'mentor') {
       typedData.mentor = true
     }
@@ -31,7 +30,10 @@ export default class SignupForm extends Component {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(typedData)
     })
-    .then(response => response.json())
+    .then(response => {
+      response.json()
+      localStorage.setItem('username', typedData.username)
+    })
     .catch(err => console.log(err))
 
   }
