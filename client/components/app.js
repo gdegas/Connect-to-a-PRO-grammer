@@ -6,7 +6,7 @@ export const App = () => {
   return (
     <div className="window">
       <Navbar />
-      <SignupForm />
+      {(!localStorage.username) ? <SignupForm /> : null}
     </div>
   )
 }
