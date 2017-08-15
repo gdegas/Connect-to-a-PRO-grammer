@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
+import io from 'socket.io-client'
+const socket = io.connect('http://localhost:3000')
 
 export default class SignupForm extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { value: '' }
+    this.state = { user: {} }
 
     this.handleData = this.handleData.bind(this)
   }
@@ -12,6 +14,36 @@ export default class SignupForm extends Component {
   handleData(event) {
     event.preventDefault()
     const formData = new FormData(event.target)
+
+    const languages = formData.getAll('languages')
+    const newLanguages = languages.map(language => {
+      switch (language) {
+        case '1':
+          language = 'Javascript'
+          break
+        case '2':
+          language = 'HTML'
+          break
+        case '3':
+          language = 'SQL'
+          break
+        case '4':
+          language = 'Java'
+          break
+        case '5':
+          language = 'CSS'
+          break
+        case '6':
+          language = 'Ruby'
+          break
+        case '7':
+          language = 'Python'
+          break
+        default:
+          language = 'No Languages'
+      }
+      return language
+    })
 
     const typedData = {
       username: formData.get('username'),
@@ -32,7 +64,8 @@ export default class SignupForm extends Component {
     })
     .then(response => {
       response.json()
-      localStorage.setItem('username', typedData.username)
+      socket.emit('login', {username: typedData.username, languages: newLanguages, mentor: typedData.mentor})
+      localStorage.setItem('user', JSON.stringify({username: typedData.username, languages: newLanguages, mentor: typedData.mentor}))
     })
     .catch(err => console.log(err))
 
