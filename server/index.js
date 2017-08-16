@@ -43,6 +43,7 @@ io.on('connection', function (socket) {
     console.log('user logged in', userList)
     const userPosition = userList.length - 1
     socket.userPosition = userPosition
+    // data.socket = socket.id
     io.sockets.emit('broadcast', userList)
   })
 

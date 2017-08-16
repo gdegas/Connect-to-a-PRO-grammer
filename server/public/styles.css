@@ -53,3 +53,11 @@ ul.list-group {
 div.card {
   background-color: rgba(255, 255, 255, 0.59);
 }
+
+.chat-panel {
+  height: 100vh;
+}
+
+#chat-input {
+  width: 100%;
+}
