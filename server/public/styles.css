@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  margin: 0;
 }
 
 #signupForm {
@@ -9,6 +8,7 @@
   border: #e3eae2 solid;
   background-color: rgba(255, 255, 255, 0.59);
   padding: 25px;
+  font-family: 'Saira', sans-serif;
 }
 
 body {
@@ -25,6 +25,31 @@ body {
   color: #ecf0f1;
 }
 
-#signupForm {
-  font-family: 'Saira', sans-serif;
+.role-title {
+  color: #76ffd1;
+  margin-bottom: 22px;
+  margin-top: 23px;
+}
+
+.card-img-top {
+  height: 150px;
+  margin: 20px;
+}
+
+ul.list-group {
+  font-size: 15px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.user-lists {
+  margin-left: 26px;
+}
+
+.card-title {
+  color: #87ff11;
+}
+
+div.card {
+  background-color: rgba(255, 255, 255, 0.59);
 }
