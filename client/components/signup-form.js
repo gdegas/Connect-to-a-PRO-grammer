@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import io from 'socket.io-client'
-const socket = io.connect('http://localhost:3000')
+import socket from '../socket'
 
 export default class SignupForm extends Component {
   constructor(props) {
@@ -63,9 +62,12 @@ export default class SignupForm extends Component {
       body: JSON.stringify(typedData)
     })
     .then(response => {
-      response.json()
       socket.emit('login', {username: typedData.username, languages: newLanguages, mentor: typedData.mentor})
       localStorage.setItem('user', JSON.stringify({username: typedData.username, languages: newLanguages, mentor: typedData.mentor}))
+      return response.json()
+    })
+    .then(() => {
+      this.props.changeView()
     })
     .catch(err => console.log(err))
 
