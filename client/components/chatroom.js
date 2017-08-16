@@ -17,6 +17,11 @@ export default class Chatroom extends Component {
     event.target.reset()
   }
 
+  // componentDidMount() {
+  //   socket.emit('chat-join', this.props.username)
+  //   // emit an event that joins you
+  // }
+
   render() {
     console.log(this.state.messages)
     return (
@@ -24,7 +29,7 @@ export default class Chatroom extends Component {
           <div className="col-sm-6">
             <div className="card chat-panel">
               <div className="card-header">
-                Chatroom
+                {this.props.theirUsername}
               </div>
               <div className="card-block">
                 {

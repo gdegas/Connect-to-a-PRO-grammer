@@ -32,7 +32,9 @@ export default class UserList extends Component {
                         </ul>
                       </div>
                       <div className="card-footer">
-                        <a href="#" className="btn btn-primary card-link">Chat with me</a>
+                        <a onClick={() => {
+                          this.props.openChat(user)
+                        }} className="btn btn-primary card-link">Chat with me</a>
                       </div>
                     </div>)
           })}
@@ -52,7 +54,9 @@ export default class UserList extends Component {
                           </ul>
                         </div>
                         <div className="card-footer">
-                          <a href="#" className="btn btn-primary card-link">Chat with me</a>
+                          <a onClick={() => {
+                            this.props.openChat(user)
+                          }} className="btn btn-primary card-link">Chat with me</a>
                         </div>
                       </div>)
             })}
