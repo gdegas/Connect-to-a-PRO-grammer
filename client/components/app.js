@@ -8,7 +8,7 @@ import Chatroom from './chatroom'
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { currentView: null, isChatopen: false, chattingWith: null }
+    this.state = { socketId: null, user: null, currentView: null, isChatopen: false, chattingWith: null }
     this.showUserList = this.showUserList.bind(this)
     this.openChat = this.openChat.bind(this)
   }
@@ -20,21 +20,26 @@ export default class App extends Component {
       this.setState({currentView: 'signupForm'})
     }
     else {
-      this.setState({currentView: 'userList'})
       socket.emit('login', userObj)
+      this.setState({currentView: 'userList'})
+      // this.setState({currentView: 'userList', user: userObj})
     }
-
+    socket.on('getSocketId', (socketId) => {
+      this.setState({ socketId: socketId })
+    })
   }
 
-  showUserList() {
-    this.setState({currentView: 'userList'})
+  showUserList(user) {
+    this.setState({ currentView: 'userList', user: user })
   }
 
   openChat(user) {
     this.setState({currentView: 'chatRoom', isChatOpen: true, chattingWith: user})
+
   }
 
   render() {
+    console.log('state: ', this.state)
     return (
       <div className="window">
         <Navbar />
@@ -42,7 +47,6 @@ export default class App extends Component {
         {this.state.currentView === 'userList' && <UserList openChat={this.openChat}/>}
         {this.state.currentView === 'chatRoom' && <Chatroom theirUsername={this.state.chattingWith.username}/>}
       </div>
-
     )
   }
 }

@@ -67,7 +67,7 @@ export default class SignupForm extends Component {
       return response.json()
     })
     .then(() => {
-      this.props.changeView()
+      this.props.changeView(typedData)
     })
     .catch(err => console.log(err))
 
